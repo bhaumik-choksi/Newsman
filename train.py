@@ -18,11 +18,9 @@ garbage = set(stopwords.words('english'))
 def normalize_text(s, keywords):
     s = s.lower()
 
-    # remove punctuation that is not word-internal (e.g., hyphens, apostrophes)
     s = re.sub('\s\W', ' ', s)
     s = re.sub('\W\s', ' ', s)
 
-    # make sure we didn't introduce any double spaces
     s = re.sub('\s+', ' ', s)
     s = s.split()
     s = list(filter((lambda x: x not in garbage), s))
@@ -45,7 +43,6 @@ x = vectorizer.fit_transform(news['title'])
 encoder = LabelEncoder()
 y = encoder.fit_transform(news['category'])
 
-# split into train and test sets
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 nb = MultinomialNB()
 nb.fit(x_train, y_train)

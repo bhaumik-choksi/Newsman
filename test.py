@@ -34,11 +34,9 @@ classifier = pickle.load(open("classifier.p", "rb"))
 def normalize_text(s, keywords):
     s = s.lower()
 
-    # remove punctuation that is not word-internal (e.g., hyphens, apostrophes)
     s = re.sub('\s\W', ' ', s)
     s = re.sub('\W\s', ' ', s)
 
-    # make sure we didn't introduce any double spaces
     s = re.sub('\s+', ' ', s)
     s = s.split()
     s = list(filter((lambda x: x not in garbage), s))
@@ -61,7 +59,7 @@ def find_category(title, vectorizer, encoder, keywords, classifier):
 
 
 ln = LiveNews(API_KEY)
-articles = ln.fetch(source="cnbc")
+articles = ln.fetch(source="cnbc")  # TODO: Remove hardcoded source
 for article in articles:
     print(article["title"], " ", find_category(article["title"], vectorizer, encoder, keywords, classifier))
     print("---")
@@ -95,7 +93,7 @@ listbox.insert(END, "Pick a category!")
 def news_refresh_callback(category, listbox):
     listbox.delete(0, END)
     articles = get_news_articles(category)
-    if len(articles) == 0:
+    if len(articles) == 0:  # No articles returned
         listbox.insert(END, "Oops, not articles in this category")
         listbox.insert("Try another source")
         return
