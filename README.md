@@ -7,3 +7,13 @@ Newsman uses natural language processing to find out what category a particular 
 - Technology
 - Health
 - Entertainment
+
+## Samples
+
+![img]()
+
+![img]()
+
+
+## Dataset
+[UCI News Aggregator Data Set](https://archive.ics.uci.edu/ml/datasets/News+Aggregator)

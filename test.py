@@ -58,12 +58,6 @@ def find_category(title, vectorizer, encoder, keywords, classifier):
     return encoder.inverse_transform(output)[0]  # Single elements array, so return first elem
 
 
-ln = LiveNews(API_KEY)
-articles = ln.fetch(source="cnbc")  # TODO: Remove hardcoded source
-for article in articles:
-    print(article["title"], " ", find_category(article["title"], vectorizer, encoder, keywords, classifier))
-    print("---")
-
 def get_news_articles(category):
     ln = LiveNews(API_KEY)  # TODO: Remove global variable
     articles = ln.fetch(source="google-news")   # TODO : Add spinner for news sources in the GUI
@@ -95,7 +89,7 @@ def news_refresh_callback(category, listbox):
     articles = get_news_articles(category)
     if len(articles) == 0:  # No articles returned
         listbox.insert(END, "Oops, not articles in this category")
-        listbox.insert("Try another source")
+        listbox.insert(END, "Try another source")
         return
 
     for article in articles:
