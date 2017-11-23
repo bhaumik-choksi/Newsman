@@ -10,9 +10,9 @@ Newsman uses natural language processing to find out what category a particular 
 
 ## Samples
 
-![img]()
+![img](https://github.com/bhaumik-choksi/Newsman/blob/master/screenshots/business.JPG)
 
-![img]()
+![img](https://github.com/bhaumik-choksi/Newsman/blob/master/screenshots/technology.JPG)
 
 
 ## Dataset
