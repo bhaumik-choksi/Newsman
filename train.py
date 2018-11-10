@@ -11,7 +11,7 @@ from sklearn.naive_bayes import MultinomialNB
 import pickle
 
 # Read data and initialize stop-words
-news = pd.read_excel('newss.xlsx', usecols=['title', 'category'])
+news = pd.read_excel('./newscorpus.xlsx')
 garbage = set(stopwords.words('english'))
 
 
